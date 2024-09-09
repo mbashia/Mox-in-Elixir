@@ -1,0 +1,38 @@
+<div>
+  <h1>Weather App</h1>
+  <form phx-submit="get_weather">
+    <input type="text" name="location" placeholder="Enter location" />
+    <button type="submit">Get Weather</button>
+  </form>
+
+  <%= if @error do %>
+    <p style="color: red;">Error: <%= @error %></p>
+  <% end %>
+
+  <%= if @weather do %>
+    <div class="w-[55%] border h-[150px] rounded-2xl flex px-4 py-2 ">
+      <div class="w-[30%]  ">
+        <img src={@weather.icon} />
+      </div>
+      <div class="w-[70%]  flex ">
+        <div class="w-[60%]">
+          <span class="font-bold text-4xl"><%= @weather.temp_c %></span><span>C</span>
+        </div>
+
+        <div class="w-[60%] flex-col">
+          <div class="flex gap-2">
+            <span>Precipitation:</span><span><%= @weather.precip %>%</span>
+          </div>
+
+          <div class="flex gap-2">
+            <span>Humidity:</span><span> <%= @weather.humidity %>%</span>
+          </div>
+
+          <div class="flex gap-2">
+            <span>Wind:</span><span><%= @weather.wind %>Km/h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
