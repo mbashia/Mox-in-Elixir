@@ -53,7 +53,6 @@ defmodule WeatherApp.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:httpoison, "~> 1.5.0"},
       {:mox, "~> 0.5.0", only: :test}
-
     ]
   end
 
