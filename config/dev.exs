@@ -29,6 +29,8 @@ config :weather_app, WeatherAppWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
+config :weather_app, api_client: WeatherApp.WeatherClient
+config :weather_app, :weather_api_key, System.get_env("API_KEY_WEATHER")
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
