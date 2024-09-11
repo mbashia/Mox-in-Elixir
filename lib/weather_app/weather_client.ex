@@ -1,6 +1,9 @@
 defmodule WeatherApp.WeatherClient do
   require Logger
-  @api_key "6a1a09fc2cc54a3195853737240909"
+
+  @behaviour WeatherApp.ApiClientBehaviour
+
+  @api_key Application.compile_env(:weather_app, :weather_api_key)
   @base_url "http://api.weatherapi.com/v1/current.json"
 
   def get_current_weather(location) do
@@ -43,5 +46,7 @@ defmodule WeatherApp.WeatherClient do
         precip: body["current"]["precip_mm"]
       }
       |> IO.inspect()
+
+    weather_map
   end
 end
