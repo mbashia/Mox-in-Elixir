@@ -1,8 +1,8 @@
 <div>
   <h1>Weather App</h1>
-  <form phx-submit="get_weather">
+  <form id="search-weather-form" phx-submit="get_weather">
     <input type="text" name="location" placeholder="Enter location" />
-    <button  id ="search-button"type="submit">Get Weather</button>
+    <button id="search-button" type="submit">Get Weather</button>
   </form>
 
   <%= if @error do %>

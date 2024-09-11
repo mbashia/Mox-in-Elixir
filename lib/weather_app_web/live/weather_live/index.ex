@@ -1,7 +1,7 @@
 defmodule WeatherAppWeb.WeatherLive.Index do
   use WeatherAppWeb, :live_view
 
-  alias WeatherApp.WeatherClient
+  #   alias WeatherApp.WeatherClient
   require Logger
 
   @impl true
@@ -19,7 +19,7 @@ defmodule WeatherAppWeb.WeatherLive.Index do
     IO.inspect(location)
     Logger.info("I receive the event")
 
-    case WeatherClient.get_current_weather(location) do
+    case api_client().get_current_weather(location) do
       {:ok, weather} ->
         {:noreply, assign(socket, weather: weather)}
 
@@ -27,4 +27,6 @@ defmodule WeatherAppWeb.WeatherLive.Index do
         {:noreply, socket |> put_flash(:error, reason)}
     end
   end
+
+  def api_client, do: Application.get_env(:weather_app, :api_client)
 end
